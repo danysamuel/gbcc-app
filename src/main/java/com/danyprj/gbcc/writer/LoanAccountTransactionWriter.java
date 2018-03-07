@@ -40,9 +40,6 @@ public class LoanAccountTransactionWriter implements ItemWriter<LoanAccountTrans
 		}
 
 		for (LoanAccount la : compiledLoanAcLst) {
-//			LoanAccount laTemp = new LoanAccount();
-//			laTemp.setAccountId(lat.getAccountId());
-//			laTemp.setAccountBalance(lat.getAmount());
 			repository.save(la);
 
 		}
@@ -128,7 +125,6 @@ public class LoanAccountTransactionWriter implements ItemWriter<LoanAccountTrans
 
 		Optional<Path> cpath;
 
-		logger.info("----------------------->evnvironment" + environment);
 		try (Stream<Path> paths = Files.walk(Paths.get(environment + "/pending"))) {
 
 			cpath = paths.filter(Files::isRegularFile).findFirst();
